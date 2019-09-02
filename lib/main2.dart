@@ -1,22 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'layout_test.dart';
 
-class Main2State extends StatefulWidget {
+class Main2State extends StatelessWidget {
   Main2State();
 
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new MaterialApp(
+      home: new MyWidget() ,
+    );
+  }
+}
+class MyWidget extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return new MyState();
   }
+
 }
 
-class MyState extends State<Main2State> {
+class MyState extends State<MyWidget> {
+  //文本输入控制器
+  var editController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
         appBar: new AppBar(
+          actions: <Widget>[
+            new IconButton(icon: new Icon(Icons.map), onPressed: _pushLayout),
+          ],
           title: new Text('基础控件'),
         ),
         //滑动布局
@@ -52,7 +69,7 @@ class MyState extends State<Main2State> {
                           //每个字符之间的间距
                           letterSpacing: 10.0,
                           //字间距、字句间距
-//                wordSpacing: 10.0,
+//                        wordSpacing: 10.0,
                           //添加划线
                           decoration: TextDecoration.underline,
                           //划线样式
@@ -133,10 +150,28 @@ class MyState extends State<Main2State> {
                         ),
                       ),
                     ),
+                    //文本输入框
+                    new TextField(
+                          controller: editController,
+                    )
                   ],
                 ),
               )),
         ));
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    //释放文本输入资源
+    editController.dispose();
+  }
+
+  void _pushLayout() {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context){return Layout();})
+    );
   }
 }
 
