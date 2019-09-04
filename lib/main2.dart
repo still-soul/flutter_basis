@@ -9,17 +9,17 @@ class Main2State extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new MaterialApp(
-      home: new MyWidget() ,
+      home: new MyWidget(),
     );
   }
 }
-class MyWidget extends StatefulWidget{
+
+class MyWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return new MyState();
   }
-
 }
 
 class MyState extends State<MyWidget> {
@@ -85,7 +85,7 @@ class MyState extends State<MyWidget> {
                       onPressed: () {
                         showDialog(
                             context: context,
-                            builder: (_) {
+                            builder: (context) {
                               return AlertDialog(
                                 //内容
                                 content: Text("点击了RaisedButton"),
@@ -93,7 +93,7 @@ class MyState extends State<MyWidget> {
                                   FlatButton(
                                     child: Text("关闭"),
                                     //点击关闭
-                                    onPressed: () => Navigator.pop(context),
+                                    onPressed: () => Navigator.of(context).pop(),
                                   )
                                 ],
                               );
@@ -152,7 +152,7 @@ class MyState extends State<MyWidget> {
                     ),
                     //文本输入框
                     new TextField(
-                          controller: editController,
+                      controller: editController,
                     )
                   ],
                 ),
@@ -169,9 +169,9 @@ class MyState extends State<MyWidget> {
   }
 
   void _pushLayout() {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context){return Layout();})
-    );
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return Layout();
+    }));
   }
 }
 
