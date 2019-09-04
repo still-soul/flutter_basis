@@ -23,7 +23,28 @@ class LayoutTest extends StatefulWidget {
   }
 }
 
-class LayoutState extends State<LayoutTest> {
+class LayoutState extends State<LayoutTest>
+    with WidgetsBindingObserver{
+  //插入渲染树的时候调用，只调用一次
+  @override
+  void initState() {
+    print('插入渲染树');
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+  //state依赖的对象发生变化时调用
+  @override
+  void didChangeDependencies() {
+    print('state依赖的对象发生变化');
+    super.didChangeDependencies();
+  }
+  //组件状态改变时候调用
+  @override
+  void didUpdateWidget(LayoutTest oldWidget) {
+    print('组件状态改变');
+    super.didUpdateWidget(oldWidget);
+  }
+  //构建widget时调用
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -97,7 +118,22 @@ class LayoutState extends State<LayoutTest> {
                     ),
                   )
                 ],
-              )
+              ),
+              //水平布局
+              new Row(
+                children: <Widget>[
+                  //除其他控件外占满一行
+                  Expanded(
+                      flex: 2,
+                      child: RaisedButton(
+                          onPressed: null,
+                          child: Text('tv1'))),
+                  Expanded(
+                      flex: 1,
+                      child: RaisedButton(onPressed: null, child: Text('tv2')))
+                ],
+              ),
+
             ],
           ),
         ));
@@ -115,4 +151,40 @@ class LayoutState extends State<LayoutTest> {
       }
     });
   }
+
+  //当移除渲染树的时候调用
+  @override
+  void deactivate() {
+    print('移除渲染树');
+    super.deactivate();
+  }
+  //组件即将销毁时调用
+  @override
+  void dispose() {
+    print('组件即将销毁');
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // TODO: implement didChangeAppLifecycleState
+    super.didChangeAppLifecycleState(state);
+    switch(state){
+      case AppLifecycleState.inactive:
+        print('AppLifecycleState.inactive');
+        break;
+      case AppLifecycleState.resumed:
+        print('AppLifecycleState.resumed');
+        break;
+      case AppLifecycleState.paused:
+        print('AppLifecycleState.paused');
+        break;
+      case AppLifecycleState.suspending:
+        print('AppLifecycleState.suspending');
+        break;
+    }
+
+  }
+
 }
