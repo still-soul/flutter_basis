@@ -9,23 +9,26 @@ class Main2State extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new MaterialApp(
-      home: new MyWidget(),
+      home: new MyWidget(mContext : context),
     );
   }
 }
 
 class MyWidget extends StatefulWidget {
+  BuildContext mContext;
+  MyWidget({this.mContext});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new MyState();
+    return new MyState(buildContext:mContext);
   }
 }
 
 class MyState extends State<MyWidget> {
   //文本输入控制器
   var editController = TextEditingController();
-
+  BuildContext buildContext;
+  MyState({this.buildContext});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -77,6 +80,7 @@ class MyState extends State<MyWidget> {
                     ),
                     new FlatButton(
                         onPressed: () => showToast('点击了flatButton'),
+//                        onPressed: () => Navigator.pop(buildContext,"返回信息"),
                         child: Text(
                           'button',
                           style: TextStyle(color: Colors.black, fontSize: 18.0),

@@ -41,10 +41,11 @@ class MainState extends State<MyPage> {
 
             ),
           ),
-          onTap:(){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context){
+          onTap:() async {
+            var msg = await Navigator.of(context).push(MaterialPageRoute(builder: (context){
               return Main2State();
             }));
+            debugPrint(msg);
           },
         ),
 

@@ -133,7 +133,23 @@ class LayoutState extends State<LayoutTest>
                       child: RaisedButton(onPressed: null, child: Text('tv2')))
                 ],
               ),
+              new GestureDetector(
+                child: new Container(
+                  width: 120,
+                  height: 120,
+                  color: Colors.red,
+                  alignment: Alignment.center,
+                  child: Text('这是可以点击的控件',
+                  textAlign: TextAlign.center)
+                ),
+                onTap: () => debugPrint('点击') ,
+                onDoubleTap: () => debugPrint('双击'),
+                onLongPress: () => debugPrint('长按'),
+                onTapDown: _tapDown,
+                onTapUp: _tapUp,
+                onHorizontalDragUpdate: _horizontalUpdate,
 
+              )
             ],
           ),
         ));
@@ -187,4 +203,16 @@ class LayoutState extends State<LayoutTest>
 
   }
 
+
+  void _tapDown(TapDownDetails details) {
+    debugPrint('按下');
+  }
+
+  void _tapUp(TapUpDetails details) {
+    debugPrint('抬起');
+  }
+
+  void _horizontalUpdate(DragUpdateDetails details) {
+    debugPrint('横向滑动');
+  }
 }
