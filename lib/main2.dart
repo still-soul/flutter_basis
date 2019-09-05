@@ -166,14 +166,13 @@ class MyState extends State<MyWidget> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     //释放文本输入资源
     editController.dispose();
+    super.dispose();
   }
 
   void _pushLayout() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+    Navigator.push(context,MaterialPageRoute(builder: (context) {
       return Layout();
     }));
   }

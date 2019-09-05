@@ -42,7 +42,7 @@ class MainState extends State<MyPage> {
             ),
           ),
           onTap:() async {
-            var msg = await Navigator.of(context).push(MaterialPageRoute(builder: (context){
+            var msg = await Navigator.push(context,MaterialPageRoute(builder: (context){
               return Main2State();
             }));
             debugPrint(msg);

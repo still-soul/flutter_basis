@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'anim.dart';
 
 class Layout extends StatelessWidget {
   Layout();
@@ -49,7 +50,9 @@ class LayoutState extends State<LayoutTest>
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-        appBar: new AppBar(title: new Text('基本布局')),
+        appBar: new AppBar(
+            centerTitle: true,
+            title: new Text('基本布局')),
         body: new Container(
           //垂直布局
           child: Column(
@@ -62,7 +65,7 @@ class LayoutState extends State<LayoutTest>
                   new Flexible(
                       //权重,按比例设置
                       flex: 2,
-                      //对基本组价进行了封装，类似viewGroup
+                      //对基本组件进行了封装，类似viewGroup
                       child: new Container(
                         height: 120.0,
                         color: Colors.pink,
@@ -126,8 +129,10 @@ class LayoutState extends State<LayoutTest>
                   Expanded(
                       flex: 2,
                       child: RaisedButton(
-                          onPressed: null,
-                          child: Text('tv1'))),
+                          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return AnimTest();
+                          })),
+                          child: Text('进入动画'))),
                   Expanded(
                       flex: 1,
                       child: RaisedButton(onPressed: null, child: Text('tv2')))
