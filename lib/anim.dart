@@ -47,7 +47,7 @@ class _AnimState extends State<AnimWidget> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Scaffold(
+    return  Scaffold(
           appBar: AppBar(
             centerTitle: true,
             title: Text('动画'),

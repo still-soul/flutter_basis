@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'anim.dart';
+import 'circle_curve_anim.dart';
 
 class Layout extends StatelessWidget {
   Layout();
@@ -134,7 +135,8 @@ class LayoutState extends State<LayoutTest>
                       flex: 2,
                       child: RaisedButton(
                           onPressed: () => Navigator.push(buildContext, MaterialPageRoute(builder: (buildContext){
-                            return AnimTest();
+//                            return AnimTest();
+                            return  CircleCurveView();
                           })),
                           child: Text('进入动画'))),
                   Expanded(

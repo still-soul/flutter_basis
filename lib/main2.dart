@@ -180,18 +180,19 @@ class MyState extends State<MyWidget> {
 
 showToast(String msg) {
   Fluttertoast.showToast(
+    //内容
       msg: msg,
-      //内容
-      toastLength: Toast.LENGTH_LONG,
       //时间长短
-      gravity: ToastGravity.CENTER,
+      toastLength: Toast.LENGTH_SHORT,
       //位置
-      textColor: Colors.white,
+      gravity: ToastGravity.CENTER,
       //字体颜色
-      fontSize: 18.0,
+      textColor: Colors.white,
       //字体大小
-      backgroundColor: Colors.blue,
+      fontSize: 18.0,
       //背景颜色
-      timeInSecForIos: 1 //这里的展示时长，针对iOS有用
+      backgroundColor: Colors.blue,
+      //这里的展示时长，针对iOS有用
+      timeInSecForIos: 1
       );
 }
