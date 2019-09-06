@@ -172,7 +172,7 @@ class MyState extends State<MyWidget> {
   }
 
   void _pushLayout() {
-    Navigator.push(context,MaterialPageRoute(builder: (context) {
+    Navigator.push(buildContext,MaterialPageRoute(builder: (buildContext) {
       return Layout();
     }));
   }

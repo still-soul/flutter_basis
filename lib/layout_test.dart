@@ -8,7 +8,7 @@ class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new MaterialApp(
-      home: new LayoutTest(),
+      home: new LayoutTest(mContext:context),
     );
   }
 }
@@ -17,15 +17,19 @@ var isVisible = false;
 var stringValue = '隐藏';
 
 class LayoutTest extends StatefulWidget {
+  BuildContext mContext;
+  LayoutTest({this.mContext});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new LayoutState();
+    return new LayoutState(buildContext: mContext);
   }
 }
 
 class LayoutState extends State<LayoutTest>
     with WidgetsBindingObserver{
+  BuildContext buildContext;
+  LayoutState({this.buildContext});
   //插入渲染树的时候调用，只调用一次
   @override
   void initState() {
@@ -129,7 +133,7 @@ class LayoutState extends State<LayoutTest>
                   Expanded(
                       flex: 2,
                       child: RaisedButton(
-                          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context){
+                          onPressed: () => Navigator.push(buildContext, MaterialPageRoute(builder: (buildContext){
                             return AnimTest();
                           })),
                           child: Text('进入动画'))),
