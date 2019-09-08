@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'anim.dart';
 import 'circle_curve_anim.dart';
+import 'listview/list_view.dart';
 
 class Layout extends StatelessWidget {
   Layout();
@@ -141,7 +142,9 @@ class LayoutState extends State<LayoutTest>
                           child: Text('进入动画'))),
                   Expanded(
                       flex: 1,
-                      child: RaisedButton(onPressed: null, child: Text('tv2')))
+                      child: RaisedButton(onPressed: () => Navigator.push(buildContext, MaterialPageRoute(builder: (buildContext){
+                        return  ListViewPage();
+                      })), child: Text('进入列表')))
                 ],
               ),
               new GestureDetector(
