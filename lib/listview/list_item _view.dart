@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/date_util.dart';
 import 'package:flutter_app/bean/android_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'page_gallery.dart';
+import 'gallery.dart';
+import 'web_view.dart';
 
 class AndroidListItem extends StatefulWidget {
   final AndroidItem androidItem;
@@ -22,10 +23,9 @@ class _AndroidListState extends State<AndroidListItem> {
     // TODO: implement build
     return GestureDetector(//手势控件
       onTap: () {//点击事件
-//        Navigator.of(context).push(MaterialPageRoute(builder: (context){
-//          return WebViewPage(widget.androidItem);
-//        })
-//        );
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return WebViewPage(widget.androidItem);
+        }));
       },
       child: Container(
         decoration: BoxDecoration(
