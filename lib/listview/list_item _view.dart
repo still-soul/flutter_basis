@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/date_util.dart';
 import 'package:flutter_app/bean/android_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'page_gallery.dart';
 
 class AndroidListItem extends StatefulWidget {
   final AndroidItem androidItem;
@@ -86,7 +87,9 @@ class _AndroidListState extends State<AndroidListItem> {
       contentWidgets.add(
           GestureDetector(
             onTap: (){
-
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return GalleryPage(widget.androidItem.images, widget.androidItem.desc);
+              }));
             },
             child: Container(
               margin: EdgeInsets.only(right:16 ,top: 20,bottom: 20),

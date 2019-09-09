@@ -40,7 +40,7 @@ class _ListViewState extends State<ListViewPage>{
   }
 
   Future<Map> getListData([Map<String, dynamic> params]) async {
-    const androidUrl = 'http://gank.io/api/data/Android/20/1';
+    const androidUrl = 'http://gank.io/api/data/Android/20/4';
     var response = await HttpUtil.get(androidUrl);
 
     setState(() {
