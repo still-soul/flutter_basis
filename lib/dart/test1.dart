@@ -31,8 +31,11 @@ void main() {
   dynamic obj = 'string';
 
   dynamic o = <String,int>{};
+  //使用is关键字可以类型检测
+  if(o is Map<String,int> ){
+    o['11'] = 1;
+  }
+  //as关键字 进行类型的强制转换
   var map1 = o as Map<String,int>;
-
-
 
 }
