@@ -210,8 +210,8 @@ class LayoutState extends State<LayoutTest>
       case AppLifecycleState.paused:
         print('AppLifecycleState.paused');
         break;
-      case AppLifecycleState.suspending:
-        print('AppLifecycleState.suspending');
+      case AppLifecycleState.detached:
+        print('AppLifecycleState.detached');
         break;
     }
 
